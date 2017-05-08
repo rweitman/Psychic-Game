@@ -2,60 +2,82 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Random</title>
+    <title>Psychic Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
 
-    <!-- When we start playing the game, our HTML will be placed into this div. -->
     <div id="game">
+      <!-- Beginning text -->
       <p>Press a key to start!</p>
     </div>
   <script type="text/javascript">
 
+//Defines Global Variables
 var wins = 0;
 var losses = 0;
-var ties = 0;
 var guesses=5;
 var used_letters ="";
+//Sets up the alphabet array
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//Initiates a random number
 var randomNumber=Math.floor(Math.random()*26);
 
-
+//Begins this function when a key is pressed
 document.onkeyup = function (event) {
 
+//Assigns the key pressed to the yourLetter variable
 var yourLetter = String.fromCharCode(event.keyCode).toUpperCase();
 
+//Extends the list of guessed letters with the key pressed  
 used_letters = used_letters + " &nbsp; " + yourLetter + ",";
 
+  //Detects to see if the key pressed is a single letter in the alphabet
   if ((yourLetter.match(/[a-z]/i))&&(yourLetter.length === 1))
   {
+    //Checks to see if the random number is equal to the key pressed
   	if (yourLetter.toUpperCase()===alphabet[randomNumber] )
   	{
+      //Increases your wins by 1
   		wins++;
+      //Resets guesses after winning
   		guesses = 5;
+      //Resets the list of guessed letters
   		used_letters = "";
+      //Iniates a new random number
   		randomNumber=Math.floor(Math.random()*26); 
   	}
   	else 
   	{
+      //Decreases guesses by 1
   		guesses--;
   	};
   }
   else
   {
+    //Alerts you if the key you pressed is not a single letter in the alpabet
   	alert("INVALID INPUT!");
   	guesses--;
   };
 
+  //When you run out of guesses...
  if (guesses<1){
+  //Increases losses by 1
  	losses++;
+  //Resets guesses after losing
  	guesses=5;
+  //Resets the list of guessed letters
  	used_letters = "";
+  //Initiates a new random number
   randomNumber=Math.floor(Math.random()*26); 
  }
 
+//Sets up the text used near the top of the program that has the id "game"
 var html = "<p>Press a key to continue!</p>" + "<p><h2>The Psychic Game </h2></p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guesses + "</p>" + "<p>Your Guesses So Far: " + used_letters + "<br><br>" + "</p>";
 
+//Connects the html variable to the "game" id
 document.querySelector("#game").innerHTML = html; 
 }
 
