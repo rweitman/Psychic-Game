@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+  </head>
+  <body>
+
+    <!-- When we start playing the game, our HTML will be placed into this div. -->
+    <div id="game">
+      <p>Press a key to start!</p>
+    </div>
+  <script type="text/javascript">
+
+var wins = 0;
+var losses = 0;
+var ties = 0;
+var guesses=5;
+var used_letters ="";
+var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var randomNumber=Math.floor(Math.random()*26);
+
+
+document.onkeyup = function (event) {
+
+var yourLetter = String.fromCharCode(event.keyCode).toUpperCase();
+
+used_letters = used_letters + " &nbsp; " + yourLetter + ",";
+
+  if ((yourLetter.match(/[a-z]/i))&&(yourLetter.length === 1))
+  {
+  	if (yourLetter.toUpperCase()===alphabet[randomNumber] )
+  	{
+  		wins++;
+  		guesses = 5;
+  		used_letters = "";
+  		randomNumber=Math.floor(Math.random()*26); 
+  	}
+  	else 
+  	{
+  		guesses--;
+  	};
+  }
+  else
+  {
+  	alert("INVALID INPUT!");
+  	guesses--;
+  };
+
+ if (guesses<1){
+ 	losses++;
+ 	guesses=5;
+ 	used_letters = "";
+  randomNumber=Math.floor(Math.random()*26); 
+ }
+
+var html = "<p>Press a key to continue!</p>" + "<p><h2>The Psychic Game </h2></p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guesses + "</p>" + "<p>Your Guesses So Far: " + used_letters + "<br><br>" + "</p>";
+
+document.querySelector("#game").innerHTML = html; 
+}
+
+</script>
+</body>
+</html>
