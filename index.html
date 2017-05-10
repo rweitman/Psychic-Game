@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Psychic Game</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
@@ -11,14 +11,14 @@
 
     <div id="game">
       <!-- Beginning text -->
-      <p>Press a key to start!</p>
+      <p><h3>---Press a key to start!---</h3></p>
     </div>
   <script type="text/javascript">
 
 //Defines Global Variables
 var wins = 0;
 var losses = 0;
-var guesses=5;
+var guesses=10;
 var used_letters ="";
 //Sets up the alphabet array
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -43,7 +43,7 @@ used_letters = used_letters + " &nbsp; " + yourLetter + ",";
       //Increases your wins by 1
   		wins++;
       //Resets guesses after winning
-  		guesses = 5;
+  		guesses = 10;
       //Resets the list of guessed letters
   		used_letters = "";
       //Iniates a new random number
@@ -58,7 +58,7 @@ used_letters = used_letters + " &nbsp; " + yourLetter + ",";
   else
   {
     //Alerts you if the key you pressed is not a single letter in the alpabet
-  	alert("INVALID INPUT!");
+  	alert("INVALID CHARACTER!");
   	guesses--;
   };
 
@@ -67,7 +67,7 @@ used_letters = used_letters + " &nbsp; " + yourLetter + ",";
   //Increases losses by 1
  	losses++;
   //Resets guesses after losing
- 	guesses=5;
+ 	guesses=10;
   //Resets the list of guessed letters
  	used_letters = "";
   //Initiates a new random number
@@ -75,7 +75,7 @@ used_letters = used_letters + " &nbsp; " + yourLetter + ",";
  }
 
 //Sets up the text used near the top of the program that has the id "game"
-var html = "<p>Press a key to continue!</p>" + "<p><h2>The Psychic Game </h2></p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guesses + "</p>" + "<p>Your Guesses So Far: " + used_letters + "<br><br>" + "</p>";
+var html = "<p><h3> --- Press a key to continue! --- </h3></p>" + "<p><h2>The Psychic Game </h2></p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guesses + "</p>" + "<p>Your Guesses So Far: " + used_letters + "<br><br>" + "</p>";
 
 //Connects the html variable to the "game" id
 document.querySelector("#game").innerHTML = html; 
