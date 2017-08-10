@@ -1,12 +1,24 @@
-h2 {
-	font-size:20px;
+body{
+	background: url(../images/img_background.jpg);
+	background-size: 100%;
+	z-index:.1;
+	opacity:1;
+}
+
+#game {
+	z-index: 1;
+	height: 100px;
+	width: auto;
+	margin: 200px auto;
+	color: white;
+	font-weight: bold;
+	text-align:center;
+}
+
+h1 {
+	font-size: 40px;
 }
 
 p {
-	line-height: 10px;
-	text-indent: 30px;
-}
-
-h3 {
-	font-size: 15px;
+	font-height:40px;
 }
